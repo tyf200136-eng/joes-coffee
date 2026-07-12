@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/inter/800.css";
+@import "@fontsource/inter/900.css";
+@import "@fontsource/inter/400-italic.css";
+@import "@fontsource/permanent-marker";
+
+:root {
+  --ease-standard: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Design tokens. @theme both defines Tailwind utilities (bg-background,
+   text-foreground, font-display, text-9xl, rounded-brand, etc.) and emits
+   these as real CSS custom properties on :root. */
+@theme {
+  --color-background: #f5f0e8;
+  --color-foreground: #2c1810;
+  --color-card: #ede7db;
+  --color-accent: #8b7355;
+  --color-background-accent: #6f4e37;
+
+  --radius-brand: 1.75rem;
+
+  --font-display: "Permanent Marker", cursive;
+  --font-body: "Inter", sans-serif;
+
+  --text-9xl: clamp(5.25rem, 7.73vw, 7.92rem);
+  --text-h2: clamp(2.5rem, 5vw, 4.06rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-background-accent);
+  color: var(--color-background);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Custom scrollbar to feel intentional, not default browser chrome */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Add this to your src/index.css (or globals.css), inside @layer components or at the root */
+
+.card {
+  background-color: rgba(245, 240, 232, 0.55); /* --color-background at ~55% opacity — frosted, not solid */
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 8px 32px rgba(44, 24, 16, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25); /* soft inner highlight along the top edge, like real glass */
+}
+
+/* Optional: a slightly stronger version for the small name-label overlay,
+   since it sits on top of a busy photo and needs a touch more contrast */
+.card.card--label {
+  background-color: rgba(245, 240, 232, 0.7);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+}
