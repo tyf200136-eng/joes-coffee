@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 
 const EASE = [0.65, 0, 0.35, 1] as const;
 
@@ -38,7 +38,7 @@ function FloatingProductCard({
   y,
 }: {
   card: FloatingCard;
-  y: ReturnType<typeof useTransform>;
+  y: MotionValue<string>;
 }) {
   return (
     <motion.div

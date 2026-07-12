@@ -10,12 +10,6 @@
 
 :root {
   --ease-standard: cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-/* Design tokens. @theme both defines Tailwind utilities (bg-background,
-   text-foreground, font-display, text-9xl, rounded-brand, etc.) and emits
-   these as real CSS custom properties on :root. */
-@theme {
   --color-background: #f5f0e8;
   --color-foreground: #2c1810;
   --color-card: #ede7db;
