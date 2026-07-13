@@ -50,34 +50,34 @@ function BeyondTheCupSection() {
     <section className="mx-auto w-full max-w-7xl px-4 py-24 sm:px-6">
       <div className="flex flex-col items-center text-center">
         <span className="rounded-brand bg-card px-4 py-1.5 text-sm font-medium text-foreground/70">
-          Beyond the Cup
+          أكثر من مجرد حلى
         </span>
         <h2
           className="mt-6 text-h2 font-normal leading-tight text-foreground"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          More Than Just Coffee
+          نكهات تستحق التجربة
         </h2>
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 md:grid-rows-2">
         <Card
-          title="Private Events"
-          description="Host your next gathering in our cozy back room, complete with a dedicated barista bar."
-          image="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=900&q=80&auto=format&fit=crop"
+          title="طلبات خاصة"
+          description="نجهز طلبات السنبون والتشيز كيك بكميات كبيرة لمناسباتك ومناسبات محبينك."
+          image="/images/menu/طلبات خاصة.jpg"
           className="aspect-[4/3] md:aspect-auto"
         />
         <Card
-          title="Catering"
-          description="Fresh coffee and pastries delivered to your office, wedding, or celebration."
-          image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80&auto=format&fit=crop"
+          title="طازج يوميًا"
+          description="نخبز كل قطعة سنبون وتشيز كيك صباح كل يوم بمكونات طبيعية مختارة بعناية."
+          image="/images/menu/Cinnamon rolls.jpg"
           className="aspect-[4/3] md:aspect-auto"
           delay={0.1}
         />
         <Card
-          title="Custom Menus"
-          description="Work with our roastmaster to build a menu that fits your event perfectly."
-          image="https://images.unsplash.com/photo-1509785307050-d4066910ec1e?w=900&q=80&auto=format&fit=crop"
+          title="قهوتنا المختصة"
+          description="نحرص على اختيار أجود حبوب القهوة المختصة لتكون الرفيق المثالي لكل قطعة حلى."
+          image="/images/menu/قهوتنا المختصة.jpg"
           className="aspect-[4/3] md:col-span-2 md:aspect-[21/9]"
           delay={0.2}
         />

@@ -2,14 +2,14 @@ import { useRef, useEffect, useCallback } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const TRAIL_IMAGES = [
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-1.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-2.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-3.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-4.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-5.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-6.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-7.webp",
-  "https://storage.googleapis.com/webild/default/templates/joes-coffee/trail/trail-8.webp",
+  "/images/menu/ -3.jpg",
+  "/images/menu/Roll.jpg",
+  "/images/menu/ -4.jpg",
+  "/images/menu/ -5.jpg",
+  "/images/menu/-6.jpg",
+  "/images/menu/-7.jpg",
+  "/images/menu/-8.jpg",
+  "/images/menu/ -9.jpg",
 ];
 
 const MOVE_THRESHOLD = 150; // px the mouse must travel before the next image activates
@@ -63,19 +63,21 @@ function TrailItem({
   }, [activate, registerRef]);
 
   return (
-    <motion.div
-      data-trail="item"
-      className="rounded-brand w-[15em] h-[20em] absolute overflow-hidden pointer-events-none"
-      style={{
-        x: springX,
-        y: springY,
-        scale: springScale,
-        opacity: springOpacity,
-        zIndex,
-        translateX: "-50%",
-        translateY: "-50%",
-      }}
-    >
+<motion.div
+  data-trail="item"
+  className="rounded-brand w-[15em] h-[20em] absolute overflow-hidden pointer-events-none"
+  style={{
+    left: 0,
+    top: 0,
+    x: springX,
+    y: springY,
+    scale: springScale,
+    opacity: springOpacity,
+    zIndex,
+    translateX: "-50%",
+    translateY: "-50%",
+  }}
+>
       <img
         src={src}
         alt=""
@@ -144,22 +146,24 @@ function CursorTrailSection() {
       </div>
 
       <div className="relative z-10 flex flex-col items-center gap-2 w-content-width mx-auto text-center pointer-events-none">
-        <h3 className="text-3xl md:text-5xl font-medium">Move your cursor!</h3>
+        <h3 className="text-3xl md:text-5xl font-medium">اكتشف معنا...</h3>
         <h2 className="bg-gradient-to-r from-foreground to-primary-cta bg-clip-text text-transparent pb-[0.1em] -mb-[0.1em] text-7xl md:text-8xl leading-[1.15] font-semibold text-center text-balance">
-          What are you in the mood for?
+          ما الذي تشتهيه اليوم؟
         </h2>
         <div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3 pointer-events-auto">
           <a
+            
             href="#menu"
-            className="flex items-center justify-center h-10 px-6 text-sm rounded-brand bg-foreground text-background cursor-pointer"
+            className="flex items-center justify-center h-10 px-6 text-sm rounded-brand bg-foreground cursor-pointer"
+            style={{ color: "var(--color-background)" }}
           >
-            See the Menu
+            قائمتنا
           </a>
           <a
             href="#locations"
             className="flex items-center justify-center h-10 px-6 text-sm rounded-brand border border-foreground/20 cursor-pointer"
           >
-            Find Us
+            موقعنا
           </a>
         </div>
       </div>

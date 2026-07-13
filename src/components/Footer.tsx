@@ -2,16 +2,27 @@ import { ChevronRight } from "lucide-react";
 
 const columns = [
   {
-    heading: "Explore",
-    links: ["Menu", "Hot Drinks", "Pastries"],
+    heading: "استكشف",
+    links: [
+      { label: "القائمة", href: "#menu" },
+      { label: "سينابون", href: "#menu" },
+      { label: "تشيز كيك", href: "#menu" },
+    ],
   },
   {
-    heading: "Visit",
-    links: ["Find Us", "Hours", "About"],
+    heading: "زورونا",
+    links: [
+      { label: "موقعنا", href: "#contact" },
+      { label: "أوقات العمل", href: "#contact" },
+      { label: "من نحن", href: "#contact" },
+    ],
   },
   {
-    heading: "Connect",
-    links: ["Contact", "Careers", "Gift Cards"],
+    heading: "تواصل",
+    links: [
+      { label: "تواصل معنا", href: "#contact" },
+      { label: "بطاقات الهدايا", href: "#contact" },
+    ],
   },
 ];
 
@@ -26,13 +37,13 @@ function Footer() {
             </p>
             <ul className="flex flex-col gap-3">
               {col.links.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="flex items-center gap-1.5 font-body text-sm text-background/85 transition-colors duration-200 ease-[cubic-bezier(0.65,0,0.35,1)] hover:text-background"
                   >
                     <ChevronRight size={14} strokeWidth={2} />
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -49,10 +60,10 @@ function Footer() {
             fontSize: "clamp(3rem, 12vw, 9rem)",
           }}
         >
-          Joe&apos;s Coffee
+          Cherry Roll
         </p>
         <p className="mt-8 pb-8 text-center font-body text-xs text-background/40">
-          © {new Date().getFullYear()} Joe&apos;s Coffee. All rights reserved.
+          © {new Date().getFullYear()} مجموعة تركي عمر.
         </p>
       </div>
     </footer>

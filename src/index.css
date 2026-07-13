@@ -6,20 +6,27 @@
 @import "@fontsource/inter/800.css";
 @import "@fontsource/inter/900.css";
 @import "@fontsource/inter/400-italic.css";
-@import "@fontsource/permanent-marker";
-
+@import "@fontsource/cairo/700.css";
 :root {
   --ease-standard: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Design tokens. @theme both defines Tailwind utilities (bg-background,
+   text-foreground, font-display, text-9xl, rounded-brand, etc.) and emits
+   these as real CSS custom properties on :root. */
+@theme {
   --color-background: #f5f0e8;
-  --color-foreground: #2c1810;
+  --color-foreground: #5c4033;
   --color-card: #ede7db;
-  --color-accent: #8b7355;
-  --color-background-accent: #6f4e37;
+  --color-accent: #a67c5a;
+  --color-background-accent: #c9a27a;
 
   --radius-brand: 1.75rem;
 
   --font-display: "Permanent Marker", cursive;
   --font-body: "Inter", sans-serif;
+  --font-display: "Cairo", sans-serif;
+  --font-body: "Cairo", sans-serif;
 
   --text-9xl: clamp(5.25rem, 7.73vw, 7.92rem);
   --text-h2: clamp(2.5rem, 5vw, 4.06rem);
@@ -84,20 +91,22 @@ img {
   }
 }
 
-/* Add this to your src/index.css (or globals.css), inside @layer components or at the root */
-
+/* Frosted-glass card style.
+   NOTE: no border-radius override on `.card--label` below — that element
+   sets its own smaller radius via a Tailwind arbitrary value
+   (rounded-[calc(var(--radius-brand)-0.75rem)]) directly in the JSX, and we
+   don't want this stylesheet fighting with it. */
 .card {
-  background-color: rgba(245, 240, 232, 0.55); /* --color-background at ~55% opacity — frosted, not solid */
+  border-radius: var(--radius-brand);
+  background-color: rgba(245, 240, 232, 0.55);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow:
     0 8px 32px rgba(44, 24, 16, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25); /* soft inner highlight along the top edge, like real glass */
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-/* Optional: a slightly stronger version for the small name-label overlay,
-   since it sits on top of a busy photo and needs a touch more contrast */
 .card.card--label {
   background-color: rgba(245, 240, 232, 0.7);
   backdrop-filter: blur(12px) saturate(160%);

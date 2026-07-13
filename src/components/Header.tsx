@@ -5,8 +5,8 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 const EASE = [0.65, 0, 0.35, 1] as const;
 
 const links = [
-  { label: "Menu", href: "#menu" },
-  { label: "Find Us", href: "#contact" },
+  { label: "القائمة", href: "#menu" },
+  { label: "موقعنا", href: "#contact" },
 ];
 
 function Header() {
@@ -17,22 +17,24 @@ function Header() {
       <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-6">
         <div className="flex w-full max-w-3xl items-center justify-between gap-3 rounded-brand bg-card/90 px-4 py-3 shadow-[0_8px_30px_rgba(44,24,16,0.08)] backdrop-blur-md sm:px-6 sm:py-4">
           <span className="font-body text-lg font-semibold tracking-tight text-foreground sm:text-xl">
-            Joe&apos;s Coffee
+            شيري رول
           </span>
 
           <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="#contact"
-              className="hidden rounded-brand bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:scale-[1.03] hover:shadow-md sm:inline-flex"
+              className="hidden rounded-brand bg-foreground px-5 py-2.5 text-sm font-medium transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:scale-[1.03] hover:shadow-md sm:inline-flex"
+              style={{ color: "var(--color-background)" }}
             >
-              Order Now
+              اطلب الآن
             </a>
             <button
               type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground text-background transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:scale-[1.05]"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-foreground transition-transform duration-300 ease-[cubic-bezier(0.65,0,0.35,1)] hover:scale-[1.05]"
+              style={{ color: "var(--color-background)" }}
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -64,7 +66,8 @@ function Header() {
                       ease: EASE,
                       delay: 0.25 + i * 0.08,
                     }}
-                    className="group flex items-center justify-center gap-3 font-display text-5xl text-background sm:text-7xl"
+                    className="group flex items-center justify-center gap-3 font-display text-5xl"
+                    style={{ color: "var(--color-background)" }}
                   >
                     {link.label}
                     <ArrowUpRight
