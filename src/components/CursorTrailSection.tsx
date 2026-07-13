@@ -12,7 +12,8 @@ const TRAIL_IMAGES = [
   "/images/menu/ -9.jpg",
 ];
 
-const MOVE_THRESHOLD = 150; // px the mouse must travel before the next image activates
+
+const MOVE_THRESHOLD = 150; // px the pointer must travel before the next image activates
 const VISIBLE_MS = 800; // how long each image stays visible before fading out
 
 type TrailItemHandle = {
@@ -63,21 +64,21 @@ function TrailItem({
   }, [activate, registerRef]);
 
   return (
-<motion.div
-  data-trail="item"
-  className="rounded-brand w-[15em] h-[20em] absolute overflow-hidden pointer-events-none"
-  style={{
-    left: 0,
-    top: 0,
-    x: springX,
-    y: springY,
-    scale: springScale,
-    opacity: springOpacity,
-    zIndex,
-    translateX: "-50%",
-    translateY: "-50%",
-  }}
->
+    <motion.div
+      data-trail="item"
+      className="rounded-brand w-[15em] h-[20em] absolute overflow-hidden pointer-events-none"
+      style={{
+        left: 0,
+        top: 0,
+        x: springX,
+        y: springY,
+        scale: springScale,
+        opacity: springOpacity,
+        zIndex,
+        translateX: "-50%",
+        translateY: "-50%",
+      }}
+    >
       <img
         src={src}
         alt=""
@@ -93,14 +94,7 @@ function CursorTrailSection() {
   const currentIndex = useRef(0);
   const itemRefs = useRef<(TrailItemHandle | null)[]>([]);
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const rect = section.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
+  const triggerAt = useCallback((x: number, y: number) => {
     if (lastPos.current) {
       const dx = x - lastPos.current.x;
       const dy = y - lastPos.current.y;
@@ -116,12 +110,41 @@ function CursorTrailSection() {
     currentIndex.current = (currentIndex.current + 1) % TRAIL_IMAGES.length;
   }, []);
 
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const section = sectionRef.current;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      triggerAt(e.clientX - rect.left, e.clientY - rect.top);
+    },
+    [triggerAt]
+  );
+
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
+      const section = sectionRef.current;
+      if (!section) return;
+      const touch = e.touches[0];
+      if (!touch) return;
+      const rect = section.getBoundingClientRect();
+      triggerAt(touch.clientX - rect.left, touch.clientY - rect.top);
+    },
+    [triggerAt]
+  );
+
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
+
     section.addEventListener("mousemove", handleMouseMove);
-    return () => section.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
+    // passive: true keeps scrolling smooth since we never call preventDefault
+    section.addEventListener("touchmove", handleTouchMove, { passive: true });
+
+    return () => {
+      section.removeEventListener("mousemove", handleMouseMove);
+      section.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [handleMouseMove, handleTouchMove]);
 
   return (
     <section
@@ -148,11 +171,10 @@ function CursorTrailSection() {
       <div className="relative z-10 flex flex-col items-center gap-2 w-content-width mx-auto text-center pointer-events-none">
         <h3 className="text-3xl md:text-5xl font-medium">اكتشف معنا...</h3>
         <h2 className="bg-gradient-to-r from-foreground to-primary-cta bg-clip-text text-transparent pb-[0.1em] -mb-[0.1em] text-7xl md:text-8xl leading-[1.15] font-semibold text-center text-balance">
-         اختر خط إنتاجك:
+         اختار خط انتاجك
         </h2>
         <div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3 pointer-events-auto">
           <a
-            
             href="#menu"
             className="flex items-center justify-center h-10 px-6 text-sm rounded-brand bg-foreground cursor-pointer"
             style={{ color: "var(--color-background)" }}
