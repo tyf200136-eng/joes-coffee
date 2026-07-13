@@ -75,8 +75,8 @@ function BeyondTheCupSection() {
           delay={0.1}
         />
         <Card
-          title="قهوتنا المختصة"
-          description="نحرص على اختيار أجود حبوب القهوة المختصة لتكون الرفيق المثالي لكل قطعة حلى."
+          title="التوريد للمقاهي والمشاريع"
+          description="نصنع ونورد بانتظام للمقاهي، المطاعم، والشركات بأعلى معايير الجودة والالتزام، لنكون الشريك المثالي لنمو أعمالكم."
           image="/images/menu/قهوتنا المختصة.jpg"
           className="aspect-[4/3] md:col-span-2 md:aspect-[21/9]"
           delay={0.2}

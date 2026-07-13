@@ -6,16 +6,26 @@ const EASE = [0.65, 0, 0.35, 1] as const;
 
 type FilterKey = "all" | MenuCategory;
 
-const filters: FilterKey[] = ["all", "cinnamon-roll", "cheesecake", "specialty-coffee"];
+// تم تعليق خيار القهوة المختصة من الفلاتر هنا
+const filters: FilterKey[] = [
+  "all", 
+  "cinnamon-roll", 
+  "cheesecake", 
+  // "specialty-coffee" 
+];
 
 function MenuSection() {
   const [filter, setFilter] = useState<FilterKey>("all");
 
   const filtered = useMemo(
-    () =>
-      filter === "all"
-        ? menuItems
-        : menuItems.filter((item) => item.category === filter),
+    () => {
+      // استبعاد عناصر القهوة من قائمة المنتجات المعروضة بالكامل حالياً
+      const availableItems = menuItems.filter((item) => item.category !== "specialty-coffee");
+
+      return filter === "all"
+        ? availableItems
+        : availableItems.filter((item) => item.category === filter);
+    },
     [filter]
   );
 
@@ -35,7 +45,7 @@ function MenuSection() {
           استكشف قائمتنا
         </h2>
         <p className="mt-4 max-w-xl font-body text-foreground/70">
-          كل قطعة سينابون وتشيز كيك تُخبز طازجة يومياً في مطبخنا لتصلك دافئة ومحضرة بأجود المكونات
+         كل دفعة (Batch) من مخبوزاتنا تحضر وتخبز بمعايير دقيقة وعناية فائقة في مصنعنا، لنضمن لكم الطعم المثالي والجودة الثابتة في كل مرة.
         </p>
       </div>
 

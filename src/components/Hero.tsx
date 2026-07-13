@@ -115,7 +115,7 @@ function Hero() {
             transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
             className="w-full md:w-1/2 font-body text-lg md:text-2xl leading-snug text-balance text-foreground/80"
           >
-            لفائف السينابون الطازجة ومخبوزاتنا المحضرة يدوياً بكل حب، في أجواء دافئة ومرحبة. من مخبزنا إلى قلبك، كل قطمة تروي حكاية.
+            مصنع شيري رول لصناعة لفائف السينابون الفاخرة والتشيز كيك المبتكر. نجمع بين دقة المعايير وشغف الخبز اليومي لنقدم لكم إنتاجاً طازجاً يصلكم مباشرة من خط الإنتاج.
           </motion.p>
 
           <motion.div

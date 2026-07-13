@@ -148,7 +148,7 @@ function CursorTrailSection() {
       <div className="relative z-10 flex flex-col items-center gap-2 w-content-width mx-auto text-center pointer-events-none">
         <h3 className="text-3xl md:text-5xl font-medium">اكتشف معنا...</h3>
         <h2 className="bg-gradient-to-r from-foreground to-primary-cta bg-clip-text text-transparent pb-[0.1em] -mb-[0.1em] text-7xl md:text-8xl leading-[1.15] font-semibold text-center text-balance">
-          ما الذي تشتهيه اليوم؟
+         اختر خط إنتاجك:
         </h2>
         <div className="flex flex-wrap justify-center gap-3 mt-2 md:mt-3 pointer-events-auto">
           <a
